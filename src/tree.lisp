@@ -1,3 +1,6 @@
+;;;; Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
+;;;; SPDX-License-Identifier: BSD-3-Clause
+
 ;;;; tree.lisp - Block tree data structure for fork choice
 ;;;;
 ;;;; Implements the block tree representation for fork choice.

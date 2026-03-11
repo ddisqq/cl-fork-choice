@@ -1,3 +1,6 @@
+;;;; Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
+;;;; SPDX-License-Identifier: BSD-3-Clause
+
 ;;;; scoring.lisp - Weight and scoring for fork choice
 ;;;;
 ;;;; Implements weight propagation and branch scoring algorithms
