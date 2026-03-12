@@ -22,7 +22,7 @@ Updates cumulative-weight for all ancestors."
           (return))
 
         ;; Recalculate cumulative weight
-        (let ((best-child-weight 0)
+        (let ((best-child-weight -1)
               (best-child-hash nil))
           (dolist (child-hash (tree-node-children node))
             (let ((child (tree-get-node tree child-hash)))
@@ -35,7 +35,7 @@ Updates cumulative-weight for all ancestors."
           (setf (tree-node-cumulative-weight node)
                 (+ (tree-node-weight node)
                    (tree-node-proposer-boost node)
-                   best-child-weight))
+                   (max 0 best-child-weight)))
           (setf (tree-node-best-descendant node) best-child-hash))
 
         ;; Move to parent
@@ -64,7 +64,7 @@ Uses post-order traversal to calculate weights bottom-up."
                        (recalculate child-hash))
 
                      ;; Then update this node
-                     (let ((best-child-weight 0)
+                     (let ((best-child-weight -1)
                            (best-child-hash nil))
                        (dolist (child-hash (tree-node-children node))
                          (let ((child (tree-get-node tree child-hash)))
@@ -76,7 +76,7 @@ Uses post-order traversal to calculate weights bottom-up."
                        (setf (tree-node-cumulative-weight node)
                              (+ (tree-node-weight node)
                                 (tree-node-proposer-boost node)
-                                best-child-weight))
+                                (max 0 best-child-weight)))
                        (setf (tree-node-best-descendant node) best-child-hash))))))
         (recalculate root-hash)))))
 
