@@ -27,4 +27,6 @@
                              (:file "tree-tests")
                              (:file "fork-choice-tests"))))
   :perform (test-op (o s)
-             (uiop:symbol-call :cl-fork-choice.tests :run-all-tests)))
+             (let ((result (uiop:symbol-call :cl-fork-choice.tests :run-all-tests)))
+               (unless result
+                 (error "Tests failed")))))
