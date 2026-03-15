@@ -6,18 +6,17 @@
 
 (asdf:defsystem #:cl-fork-choice
   :description "LMD-GHOST fork choice rule implementation for blockchain consensus"
-  :author "Parkian Company LLC"
+  :author "Park Ian Co"
   :license "Apache-2.0"
   :version "0.1.0"
   :serial t
   :depends-on ()  ; Standalone - no external dependencies
   :components ((:file "package")
                (:module "src"
-                :serial t
-                :components ((:file "types")
-                             (:file "tree")
-                             (:file "scoring")
-                             (:file "fork-choice"))))
+                :components ((:file "package")
+                             (:file "conditions" :depends-on ("package"))
+                             (:file "types" :depends-on ("package"))
+                             (:file "cl-fork-choice" :depends-on ("package" "conditions" "types"))))))
   :in-order-to ((asdf:test-op (test-op #:cl-fork-choice/tests))))
 
 (asdf:defsystem #:cl-fork-choice/tests

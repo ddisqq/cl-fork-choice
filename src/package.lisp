@@ -13,7 +13,9 @@
 Provides efficient block tree management and head selection for
 blockchain consensus systems.")
   (:export
-   ;; Constants
+   #:with-fork-choice-timing
+   #:fork-choice-batch-process
+   #:fork-choice-health-check;; Constants
    #:+genesis-slot+
    #:+genesis-epoch+
    #:+slots-per-epoch+
